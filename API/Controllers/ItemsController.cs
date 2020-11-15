@@ -1,26 +1,28 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using BLL.Interfaces;
+using System.Text;
+using BLL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Model;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaiSanPhamController : ControllerBase
+   
+    public class ItemsController : ControllerBase
     {
-        private ILoaiSanPhamBusiness ILoaiSanPham;
         private string _path;
-
-        public LoaiSanPhamController(ILoaiSanPhamBusiness ILoaiSP)
+        private IItemBusiness _itemBusiness;
+        public ItemsController(IItemBusiness itemBusiness)
         {
-            ILoaiSanPham = ILoaiSP;
+            _itemBusiness = itemBusiness;
         }
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
@@ -48,80 +50,74 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
-        // GET: api/<LoaiSanPhamController>
-        [Route("getLoaisp")]
-        [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> Get()
-        {
-            return ILoaiSanPham.getallLoai();
-        }
 
-        [Route("delete-lsp")]
+
+        [Route("delete-item")]
         [HttpPost]
         public IActionResult DeleteItem([FromBody] Dictionary<string, object> formData)
         {
-            string Maloai = "";
+            string item_id = "";
 
-            if (formData.Keys.Contains("Maloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Maloai"]))) { Maloai = Convert.ToString(formData["Maloai"]); }
-            ILoaiSanPham.Delete(Maloai);
+            if (formData.Keys.Contains("item_id") && !string.IsNullOrEmpty(Convert.ToString(formData["item_id"]))) { item_id = Convert.ToString(formData["item_id"]); }
+            _itemBusiness.Delete(item_id);
             return Ok();
         }
 
 
-        [Route("create-lsp")]
+        [Route("create-item")]
         [HttpPost]
-        public LoaiSanPhamModel CreateItem([FromBody] LoaiSanPhamModel model)
+        public ItemModel CreateItem([FromBody] ItemModel model)
         {
-            if (model.Tenloai != null)
+            if (model.item_image != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.item_image.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.item_image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
 
-            model.Maloai = Guid.NewGuid().ToString();
+            model.item_id = Guid.NewGuid().ToString();
 
-            ILoaiSanPham.Create(model);
+            _itemBusiness.Create(model);
 
             return model;
         }
 
 
-        [Route("update-lsp")]
+        [Route("update-item")]
         [HttpPost]
-        public LoaiSanPhamModel UpdateItem([FromBody] LoaiSanPhamModel model)
+        public ItemModel UpdateItem([FromBody] ItemModel model)
         {
-            if (model.Tenloai != null)
+            if (model.item_image != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.item_image.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.item_image = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            ILoaiSanPham.Update(model);
+            _itemBusiness.Update(model);
             return model;
         }
 
 
         [Route("get-all")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataAll()
+        public IEnumerable<ItemModel> GetDataAll()
         {
-            return ILoaiSanPham.GetDataAll();
+            return _itemBusiness.GetDataAll();
         }
 
         [Route("get-same-item/{item_group_id}")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataSameItem(string Maloai)
+        public IEnumerable<ItemModel> GetDataSameItem(string item_group_id)
         {
-            return ILoaiSanPham.GetDataSameItem(Maloai);
+            return _itemBusiness.GetDataSameItem(item_group_id);
         }
 
         //[Route("get-all")]
@@ -134,25 +130,25 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public LoaiSanPhamModel GetDatabyID(string id)
+        public ItemModel GetDatabyID(string id)
         {
-            return ILoaiSanPham.GetDatabyID(id);
+            return _itemBusiness.GetDatabyID(id);
         }
 
 
-        [Route("search")]
+        [Route("search1")]
         [HttpPost]
-        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        public ResponseModel Search1([FromBody] Dictionary<string, object> formData)
         {
             var response = new ResponseModel();
             try
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string Tenloai = "";
-                if (formData.Keys.Contains("Tenloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Tenloai"]))) { Tenloai = Convert.ToString(formData["Tenloai"]); }
+                string item_name = "";
+                if (formData.Keys.Contains("item_name") && !string.IsNullOrEmpty(Convert.ToString(formData["item_name"]))) { item_name = Convert.ToString(formData["item_name"]); }
                 long total = 0;
-                var data = ILoaiSanPham.Search(page, pageSize, out total, Tenloai);
+                var data = _itemBusiness.Search1(page, pageSize, out total, item_name);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
@@ -164,6 +160,31 @@ namespace API.Controllers
             }
             return response;
         }
+
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string item_group_id = "";
+                if (formData.Keys.Contains("item_group_id") && !string.IsNullOrEmpty(Convert.ToString(formData["item_group_id"]))) { item_group_id = Convert.ToString(formData["item_group_id"]); }
+                long total = 0;
+                var data = _itemBusiness.Search(page, pageSize, out total, item_group_id);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;   
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
+
     }
 }
-

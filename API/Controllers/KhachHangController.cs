@@ -13,14 +13,13 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaiSanPhamController : ControllerBase
+    public class KhachHangController : ControllerBase
     {
-        private ILoaiSanPhamBusiness ILoaiSanPham;
         private string _path;
-
-        public LoaiSanPhamController(ILoaiSanPhamBusiness ILoaiSP)
+        private IKhachHangBusiness _itemBusiness;
+        public KhachHangController(IKhachHangBusiness itemBusiness)
         {
-            ILoaiSanPham = ILoaiSP;
+            _itemBusiness = itemBusiness;
         }
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
@@ -48,80 +47,74 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
-        // GET: api/<LoaiSanPhamController>
-        [Route("getLoaisp")]
-        [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> Get()
-        {
-            return ILoaiSanPham.getallLoai();
-        }
 
-        [Route("delete-lsp")]
+
+        [Route("delete-kh")]
         [HttpPost]
         public IActionResult DeleteItem([FromBody] Dictionary<string, object> formData)
         {
-            string Maloai = "";
+            string Makh = "";
 
-            if (formData.Keys.Contains("Maloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Maloai"]))) { Maloai = Convert.ToString(formData["Maloai"]); }
-            ILoaiSanPham.Delete(Maloai);
+            if (formData.Keys.Contains("Makh") && !string.IsNullOrEmpty(Convert.ToString(formData["Makh"]))) { Makh = Convert.ToString(formData["Makh"]); }
+            _itemBusiness.Delete(Makh);
             return Ok();
         }
 
 
-        [Route("create-lsp")]
+        [Route("create-kh")]
         [HttpPost]
-        public LoaiSanPhamModel CreateItem([FromBody] LoaiSanPhamModel model)
+        public KhachHangModel CreateItem([FromBody] KhachHangModel model)
         {
-            if (model.Tenloai != null)
+            if (model.Hoten != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.Hoten.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.Hoten = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
 
-            model.Maloai = Guid.NewGuid().ToString();
+            model.Makh = Guid.NewGuid().ToString();
 
-            ILoaiSanPham.Create(model);
+            _itemBusiness.Create(model);
 
             return model;
         }
 
 
-        [Route("update-lsp")]
+        [Route("update-kh")]
         [HttpPost]
-        public LoaiSanPhamModel UpdateItem([FromBody] LoaiSanPhamModel model)
+        public KhachHangModel UpdateItem([FromBody] KhachHangModel model)
         {
-            if (model.Tenloai != null)
+            if (model.Hoten != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.Hoten.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.Hoten = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            ILoaiSanPham.Update(model);
+            _itemBusiness.Update(model);
             return model;
         }
 
 
         [Route("get-all")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataAll()
+        public IEnumerable<KhachHangModel> GetDataAll()
         {
-            return ILoaiSanPham.GetDataAll();
+            return _itemBusiness.GetDataAll();
         }
 
         [Route("get-same-item/{item_group_id}")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataSameItem(string Maloai)
+        public IEnumerable<KhachHangModel> GetDataSameItem(string Makh)
         {
-            return ILoaiSanPham.GetDataSameItem(Maloai);
+            return _itemBusiness.GetDataSameItem(Makh);
         }
 
         //[Route("get-all")]
@@ -134,9 +127,9 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public LoaiSanPhamModel GetDatabyID(string id)
+        public KhachHangModel GetDatabyID(string id)
         {
-            return ILoaiSanPham.GetDatabyID(id);
+            return _itemBusiness.GetDatabyID(id);
         }
 
 
@@ -149,10 +142,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string Tenloai = "";
-                if (formData.Keys.Contains("Tenloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Tenloai"]))) { Tenloai = Convert.ToString(formData["Tenloai"]); }
+                string Hoten = "";
+                if (formData.Keys.Contains("Hoten") && !string.IsNullOrEmpty(Convert.ToString(formData["Hoten"]))) { Hoten = Convert.ToString(formData["Hoten"]); }
                 long total = 0;
-                var data = ILoaiSanPham.Search(page, pageSize, out total, Tenloai);
+                var data = _itemBusiness.Search(page, pageSize, out total, Hoten);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
@@ -166,4 +159,3 @@ namespace API.Controllers
         }
     }
 }
-

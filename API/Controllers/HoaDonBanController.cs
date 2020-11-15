@@ -13,14 +13,14 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaiSanPhamController : ControllerBase
+    public class HoaDonBanController : ControllerBase
     {
-        private ILoaiSanPhamBusiness ILoaiSanPham;
+        private IHoaDonBanBusiness _hoaDonBusiness;
         private string _path;
 
-        public LoaiSanPhamController(ILoaiSanPhamBusiness ILoaiSP)
+        public HoaDonBanController(IHoaDonBanBusiness hoaDonBusiness)
         {
-            ILoaiSanPham = ILoaiSP;
+            _hoaDonBusiness = hoaDonBusiness;
         }
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
@@ -48,80 +48,72 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
-        // GET: api/<LoaiSanPhamController>
-        [Route("getLoaisp")]
-        [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> Get()
-        {
-            return ILoaiSanPham.getallLoai();
-        }
 
-        [Route("delete-lsp")]
+        [Route("delete-item")]
         [HttpPost]
         public IActionResult DeleteItem([FromBody] Dictionary<string, object> formData)
         {
-            string Maloai = "";
+            string Mahdb = "";
 
-            if (formData.Keys.Contains("Maloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Maloai"]))) { Maloai = Convert.ToString(formData["Maloai"]); }
-            ILoaiSanPham.Delete(Maloai);
+            if (formData.Keys.Contains("Mahdb") && !string.IsNullOrEmpty(Convert.ToString(formData["Mahdb"]))) { Mahdb = Convert.ToString(formData["Mahdb"]); }
+            _hoaDonBusiness.Delete(Mahdb);
             return Ok();
         }
-
-
-        [Route("create-lsp")]
+        
+        [Route("create-hoadonban")]
         [HttpPost]
-        public LoaiSanPhamModel CreateItem([FromBody] LoaiSanPhamModel model)
+        public HoaDonBanModel CreateItem([FromBody] HoaDonBanModel model)
         {
-            if (model.Tenloai != null)
+            model.Mahdb = Guid.NewGuid().ToString();
+            if (model.listjson_chitiet != null)
             {
-                var arrData = model.Tenloai.Split(';');
-                if (arrData.Length == 3)
-                {
-                    var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
-                    SaveFileFromBase64String(savePath, arrData[2]);
-                }
+                foreach (var item in model.listjson_chitiet)
+                    item.Macthdb = Guid.NewGuid().ToString();
             }
-
-            model.Maloai = Guid.NewGuid().ToString();
-
-            ILoaiSanPham.Create(model);
-
+            _hoaDonBusiness.Create(model);
             return model;
-        }
-
-
-        [Route("update-lsp")]
+        } 
+     /*
+        [Route("create-hoadonban")]
         [HttpPost]
-        public LoaiSanPhamModel UpdateItem([FromBody] LoaiSanPhamModel model)
+        public HoaDonBanModel CreateItem([FromBody] HoaDonBanModel model)
         {
-            if (model.Tenloai != null)
+            _hoaDonBusiness.Create(model);
+            return model;
+        } 
+        */
+
+        [Route("update-hoadonban")]
+        [HttpPost]
+        public HoaDonBanModel UpdateItem([FromBody] HoaDonBanModel model)
+        {
+            if (model.Mahdb != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.Mahdb.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.Mahdb = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            ILoaiSanPham.Update(model);
+            _hoaDonBusiness.Update(model);
             return model;
         }
 
 
         [Route("get-all")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataAll()
+        public IEnumerable<HoaDonBanModel> GetDataAll()
         {
-            return ILoaiSanPham.GetDataAll();
+            return _hoaDonBusiness.GetDataAll();
         }
 
         [Route("get-same-item/{item_group_id}")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataSameItem(string Maloai)
+        public IEnumerable<HoaDonBanModel> GetDataSameItem(string Makh)
         {
-            return ILoaiSanPham.GetDataSameItem(Maloai);
+            return _hoaDonBusiness.GetDataSameItem(Makh);
         }
 
         //[Route("get-all")]
@@ -134,9 +126,9 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public LoaiSanPhamModel GetDatabyID(string id)
+        public HoaDonBanModel GetDatabyID(string id)
         {
-            return ILoaiSanPham.GetDatabyID(id);
+            return _hoaDonBusiness.GetDatabyID(id);
         }
 
 
@@ -149,10 +141,10 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string Tenloai = "";
-                if (formData.Keys.Contains("Tenloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Tenloai"]))) { Tenloai = Convert.ToString(formData["Tenloai"]); }
+                string Mahdb = "";
+                if (formData.Keys.Contains("Mahdb") && !string.IsNullOrEmpty(Convert.ToString(formData["Mahdb"]))) { Mahdb = Convert.ToString(formData["Mahdb"]); }
                 long total = 0;
-                var data = ILoaiSanPham.Search(page, pageSize, out total, Tenloai);
+                var data = _hoaDonBusiness.Search(page, pageSize, out total, Mahdb);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
@@ -166,4 +158,3 @@ namespace API.Controllers
         }
     }
 }
-

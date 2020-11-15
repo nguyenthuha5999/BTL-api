@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class CTHoaDonBanModel
+    public class CTHoaDonBanModel
     {
         public string Macthdb { get; set; }
         public string Mahdb { get; set; }

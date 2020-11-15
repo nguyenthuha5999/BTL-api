@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,14 +14,15 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaiSanPhamController : ControllerBase
+    public class SanPhamController : ControllerBase
     {
-        private ILoaiSanPhamBusiness ILoaiSanPham;
         private string _path;
-
-        public LoaiSanPhamController(ILoaiSanPhamBusiness ILoaiSP)
+        private ISanPhamBusiness _itemBusiness;
+        public SanPhamController(ISanPhamBusiness itemBusiness, IConfiguration configuration)
         {
-            ILoaiSanPham = ILoaiSP;
+            _itemBusiness = itemBusiness;
+            _path = configuration["AppSettings:PATH"];
+
         }
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
@@ -48,80 +50,74 @@ namespace API.Controllers
                 return ex.Message;
             }
         }
-        // GET: api/<LoaiSanPhamController>
-        [Route("getLoaisp")]
-        [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> Get()
-        {
-            return ILoaiSanPham.getallLoai();
-        }
 
-        [Route("delete-lsp")]
+
+        [Route("delete-item")]
         [HttpPost]
         public IActionResult DeleteItem([FromBody] Dictionary<string, object> formData)
         {
-            string Maloai = "";
-
-            if (formData.Keys.Contains("Maloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Maloai"]))) { Maloai = Convert.ToString(formData["Maloai"]); }
-            ILoaiSanPham.Delete(Maloai);
+            string Masp = "";
+            
+            if (formData.Keys.Contains("Masp") && !string.IsNullOrEmpty(Convert.ToString(formData["Masp"]))) { Masp = Convert.ToString(formData["Masp"]); }
+            _itemBusiness.Delete(Masp);
             return Ok();
         }
 
 
-        [Route("create-lsp")]
+        [Route("create-item")]
         [HttpPost]
-        public LoaiSanPhamModel CreateItem([FromBody] LoaiSanPhamModel model)
+        public SanPhamModel CreateItem([FromBody] SanPhamModel model)
         {
-            if (model.Tenloai != null)
+            if (model.Hinhanh != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.Hinhanh.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.Hinhanh = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
 
-            model.Maloai = Guid.NewGuid().ToString();
+            model.Masp = Guid.NewGuid().ToString();
 
-            ILoaiSanPham.Create(model);
+            _itemBusiness.Create(model);
 
             return model;
         }
 
 
-        [Route("update-lsp")]
+        [Route("update-item")]
         [HttpPost]
-        public LoaiSanPhamModel UpdateItem([FromBody] LoaiSanPhamModel model)
+        public SanPhamModel UpdateItem([FromBody] SanPhamModel model)
         {
-            if (model.Tenloai != null)
+            if (model.Hinhanh != null)
             {
-                var arrData = model.Tenloai.Split(';');
+                var arrData = model.Hinhanh.Split(';');
                 if (arrData.Length == 3)
                 {
                     var savePath = $@"assets/images/{arrData[0]}";
-                    model.Tenloai = $"{savePath}";
+                    model.Hinhanh = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            ILoaiSanPham.Update(model);
+            _itemBusiness.Update(model);
             return model;
         }
 
 
         [Route("get-all")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataAll()
+        public IEnumerable<SanPhamModel> GetDataAll()
         {
-            return ILoaiSanPham.GetDataAll();
+            return _itemBusiness.GetDataAll();
         }
 
         [Route("get-same-item/{item_group_id}")]
         [HttpGet]
-        public IEnumerable<LoaiSanPhamModel> GetDataSameItem(string Maloai)
+        public IEnumerable<SanPhamModel> GetDataSameItem(string Maloai)
         {
-            return ILoaiSanPham.GetDataSameItem(Maloai);
+            return _itemBusiness.GetDataSameItem(Maloai);
         }
 
         //[Route("get-all")]
@@ -134,25 +130,25 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public LoaiSanPhamModel GetDatabyID(string id)
+        public SanPhamModel GetDatabyID(string id)
         {
-            return ILoaiSanPham.GetDatabyID(id);
+            return _itemBusiness.GetDatabyID(id);
         }
 
 
-        [Route("search")]
+        [Route("search1")]
         [HttpPost]
-        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        public ResponseModel Search1([FromBody] Dictionary<string, object> formData)
         {
             var response = new ResponseModel();
             try
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                string Tenloai = "";
-                if (formData.Keys.Contains("Tenloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Tenloai"]))) { Tenloai = Convert.ToString(formData["Tenloai"]); }
+                string Tensp = "";
+                if (formData.Keys.Contains("Tensp") && !string.IsNullOrEmpty(Convert.ToString(formData["Tensp"]))) { Tensp = Convert.ToString(formData["Tensp"]); }
                 long total = 0;
-                var data = ILoaiSanPham.Search(page, pageSize, out total, Tenloai);
+                var data = _itemBusiness.Search1(page, pageSize, out total, Tensp);
                 response.TotalItems = total;
                 response.Data = data;
                 response.Page = page;
@@ -164,6 +160,42 @@ namespace API.Controllers
             }
             return response;
         }
+
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string Maloai = "";
+                if (formData.Keys.Contains("Maloai") && !string.IsNullOrEmpty(Convert.ToString(formData["Maloai"]))) { Maloai = Convert.ToString(formData["Maloai"]); }
+                long total = 0;
+                var data = _itemBusiness.Search(page, pageSize, out total, Maloai);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
+        [Route("get-spkm")]
+        [HttpGet]
+        public IEnumerable<SanPhamModel> GetSpKm()
+        {
+            return _itemBusiness.GetSpKm();
+        }
+        [Route("get-sptot")]
+        [HttpGet]
+        public IEnumerable<SanPhamModel> GetSpTot()
+        {
+            return _itemBusiness.GetSpTot();
+        }
     }
 }
-
