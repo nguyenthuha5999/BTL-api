@@ -1,0 +1,98 @@
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\API.exe
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\API.deps.json
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\API.runtimeconfig.json
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\API.runtimeconfig.dev.json
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\API.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\API.pdb
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\BLL.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\BLL.pdb
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.csprojAssemblyReference.cache
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.RazorTargetAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplete
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.Manifest.cache
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.xml
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.pdb
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Web.Http.WebHost.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\Swashbuckle.Core.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\bin\Debug\netcoreapp3.1\WebActivatorEx.dll
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\apibanquanao\apibanquanao\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\API.exe
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\API.deps.json
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\API.runtimeconfig.json
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\API.runtimeconfig.dev.json
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\API.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\API.pdb
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Web.Http.WebHost.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Swashbuckle.Core.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\WebActivatorEx.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\BLL.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\BLL.pdb
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.csprojAssemblyReference.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.RazorTargetAssemblyInfo.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplete
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.Manifest.cache
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.xml
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.dll
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.pdb
+C:\Users\ADMIN\Desktop\apibanquanao - NTH\apibanquanao\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
